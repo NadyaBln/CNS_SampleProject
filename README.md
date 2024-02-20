@@ -1,1 +1,41 @@
-# CNS_SampleProject
+## CNS_SampleProject
+Hello! 
+My name is Nadiia, I'm Automation QA.
+This is a sample project showcasing my skills.
+
+### Description
+The CNS Sample Project (C#, Nunit, Selenium) is a simple project that demonstrates concepts and practices in AQA. 
+It includes examples of unit tests, API interactions, and basic project structure. I have used Page Object Pattern
+
+### Features
+- Retrieve data from the FakeStoreAPI.
+- Perform basic operations on the retrieved data.
+- Unit tests to ensure functionality.
+
+### Installation
+1. Clone the repository to your local machine:
+```
+git clone https://github.com/NadyaBln/CNS_SampleProject.git
+```
+2. Navigate to the project directory:
+```
+cd CNS_SampleProject
+```
+3. Build the project:
+```
+dotnet build
+```
+
+### Usage
+1. Open the solution in your preferred IDE (Visual Studio).
+2. Explore the project structure and source code.
+3. Run the unit tests to verify functionality.
+
+### Dependencies
+.NET Core 3.1
+NUnit (for unit testing)
+RestSharp (for API interactions)
+Newtonsoft.Json (for JSON serialization)
+
+### Contributing
+Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or create a pull request.
