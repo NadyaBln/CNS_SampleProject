@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<details>
+
+	<detail type="adminUser">
+		<adminUserLogin>Admin</adminUserLogin>
+		<adminUserPass>admin123</adminUserPass>
+	</detail>
+	
+</details>
