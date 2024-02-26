@@ -29,13 +29,10 @@ dotnet build
 ### Usage
 1. Open the solution in your preferred IDE (Visual Studio).
 2. Explore the project structure and source code.
-3. Run the unit tests to verify functionality.
+3. Run tests to verify functionality.
 
 ### Dependencies
-.NET Core 3.1
-NUnit (for unit testing)
-RestSharp (for API interactions)
-Newtonsoft.Json (for JSON serialization)
-
-### Contributing
-Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or create a pull request.
+- .NET Core 3.1
+- NUnit (for unit testing)
+- RestSharp (for API interactions)
+- Newtonsoft.Json (for JSON serialization)

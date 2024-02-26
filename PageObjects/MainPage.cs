@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace CNS_SampleProject.PageObjects
 {
-    public class MainPage 
+    public class MainPage : BasePage
     {
         IWebDriver _driver;
 
@@ -13,7 +13,7 @@ namespace CNS_SampleProject.PageObjects
         public static readonly By _menuItem_Admin = By.XPath("//span[text()='Admin']");
         public static readonly By _menuItem_PIM = By.XPath("//span[text()='PIM']");
 
-        public MainPage(IWebDriver driver)
+        public MainPage(IWebDriver driver): base(driver) 
         {
             _driver = driver;
         }
@@ -27,7 +27,7 @@ namespace CNS_SampleProject.PageObjects
         public AdminPage OpenAdminPage()
         {
             _driver.FindElement(_menuItem_Admin).Click();
-            WaitUntil.WaitFor(CommonLocators._tableFilter, _driver);    
+            WaitUntil.WaitFor(_tableFilter, _driver);    
 
             return new AdminPage(_driver);
         }
@@ -35,7 +35,7 @@ namespace CNS_SampleProject.PageObjects
         public PIMPage OpenPIMPage()
         {
             _driver.FindElement(_menuItem_PIM).Click();
-            WaitUntil.WaitFor(CommonLocators._tableFilter, _driver);
+            WaitUntil.WaitFor(_tableFilter, _driver);
 
             return new PIMPage(_driver);
         }

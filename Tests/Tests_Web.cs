@@ -35,6 +35,26 @@ namespace CNS_SampleProject.Tests
         }
 
         [Test]
+        public void AddEmployee()
+        {
+            string nameInThisTest = Generator.NameGenerator();
+
+            //existing test method reuse
+            Login();
+
+            var mainPage = new MainPage(_driver);
+            mainPage
+                .OpenPIMPage()
+                .ClickAddButton<PIMPage>()
+                .EnterEmployeeFullName(Config.testName, nameInThisTest, nameInThisTest)
+                .UploadImage()
+                .ClickSave<PIMPage>()
+                .CheckIsEmployeeCreated();
+        }
+
+        //please run this test after AddEmployee.
+        //Because this test needs existing Employee, but other site users could remove my employee. thanks :)
+        [Test]
         public void AddUser_AdminRole()
         {
             string usernameInThisTest = Generator.UsernameGenerator();
@@ -44,29 +64,13 @@ namespace CNS_SampleProject.Tests
 
             new MainPage(_driver)
                 .OpenAdminPage()
-                .ClickAddButton()
+                .ClickAddButton<AdminPage>()
                 .SelectUserRole(UserRole.Admin)
-                .EnterEmployeeName("Vasya")
+                .EnterEmployeeName(Config.testName)
                 .SelectStatus()
                 .EnterUsername(usernameInThisTest)
-                .EnterPassword(Base.stongPassword)
-                .ClickSave()
-                .CheckIsUserCreated();
-        }
-        [Test]
-        public void AddEmployee()
-        {
-            string nameInThisTest = Generator.NameGenerator();
-
-            //existing test method reuse
-            Login();
-
-            new MainPage(_driver)
-                .OpenPIMPage()
-                .ClickAddButton()
-                .EnterEmployeeFullName(nameInThisTest, nameInThisTest)
-                .UploadImage()
-                .ClickSave()
+                .EnterPassword(Config.stongPassword)
+                .ClickSave<AdminPage>()
                 .CheckIsUserCreated();
         }
 

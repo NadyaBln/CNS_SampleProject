@@ -4,31 +4,23 @@ using OpenQA.Selenium;
 
 namespace CNS_SampleProject.PageObjects
 {
-    public class PIMPage : CommonLocators
+    public class PIMPage : BasePage
     {
         IWebDriver _driver;
 
         public static By _field_firstname = By.XPath("//input[@name='firstName']");
         public static By _field_middlename = By.XPath("//input[@name='middleName']");
         public static By _field_lastname = By.XPath("//input[@name='lastName']");
+        public static By _errorMessage_idAlreadyExists = By.CssSelector(".oxd-input.oxd-input--active.oxd-input--error");
 
         public static By _imageInput = By.XPath("//input[@type='file']");
-        public PIMPage(IWebDriver driver) 
+        public PIMPage(IWebDriver driver) :base(driver)
         {
             _driver = driver;
         }
 
-        public PIMPage ClickAddButton()
-        {
-
-            _driver.FindElement(_button_Add).Click();
-            WaitUntil.WaitFor(_addUserContainer, _driver);
-
-            return this;
-        }
-
         /// <summary>
-        /// parameter middleName is optional
+        /// Enters given full name. Parameter middleName is optional
         /// </summary>
         /// <param name="firstName"></param>
         /// <param name="lastName"></param>
@@ -47,19 +39,22 @@ namespace CNS_SampleProject.PageObjects
 
         public PIMPage UploadImage()
         {
-            _driver.FindElement(_imageInput).SendKeys(Base.path + "Images\\sun.jpg");
+            _driver.FindElement(_imageInput).SendKeys(Config.path + "Images\\sun.jpg");
+            return this;
+        }
+        
+        public PIMPage CheckIsEmployeeIDAvailable()
+        {
+            if (_driver.FindElements(_errorMessage_idAlreadyExists).Count > 0)
+            {
+
+            }
             return this;
         }
 
-        public PIMPage ClickSave()
+        public PIMPage CheckIsEmployeeCreated()
         {
-            _driver.FindElement(_button_Submit).Click();
-            return this;
-        }
-
-        public PIMPage CheckIsUserCreated()
-        {
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
             Assert.That(CommonFunctions.IsElementPresent(_message_UserCreatedSuccess, _driver), "Employee is not created");
             return this;
         }

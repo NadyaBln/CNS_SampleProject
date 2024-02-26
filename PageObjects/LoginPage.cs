@@ -24,7 +24,7 @@ namespace CNS_SampleProject
         {
             try
             {
-                _driver.Url = Base.SiteLoginURL;
+                _driver.Url = Config.SiteLoginURL;
                 WaitUntil.WaitFor(_loginContainer, _driver);
             }
             catch(TimeoutException ex)

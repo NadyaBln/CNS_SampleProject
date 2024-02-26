@@ -13,5 +13,12 @@
             string username = CommonFunctions.StringGenerator(5);
             return username;
         }
+
+        public static string IDGenerator()
+        {
+            Random random = new Random();
+            string id = random.Next(10, 99999).ToString();
+            return id;
+        }
     }
 }

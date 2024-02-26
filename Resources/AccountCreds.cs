@@ -11,7 +11,7 @@ namespace CNS_SampleProject.Resources
         internal static void GetAccountCredsFromFile()
         {
             XmlDocument accDetails = new XmlDocument();
-            accDetails.Load(Base.path + "AccountCreds.xml");
+            accDetails.Load(Config.path + "AccountCreds.xml");
 
             XmlElement xRoot = accDetails.DocumentElement;
             foreach (XmlNode xNode in xRoot)

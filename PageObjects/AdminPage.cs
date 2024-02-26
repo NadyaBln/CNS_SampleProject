@@ -5,7 +5,7 @@ using static CNS_SampleProject.Utils.UserRoles;
 
 namespace CNS_SampleProject.PageObjects
 {
-    public class AdminPage : CommonLocators
+    public class AdminPage : BasePage
     {
         IWebDriver _driver;
         //for Add User
@@ -24,18 +24,9 @@ namespace CNS_SampleProject.PageObjects
         //for Search User 
         public static By _username = By.XPath("//label[text()='Username']/following::input[@class='oxd-input oxd-input--active']");
 
-        public AdminPage(IWebDriver driver)
+        public AdminPage(IWebDriver driver) : base(driver)
         {
             _driver = driver;
-        }
-
-        public AdminPage ClickAddButton()
-        {
-
-            _driver.FindElement(_button_Add).Click();
-            WaitUntil.WaitFor(_addUserContainer, _driver);
-
-            return this;
         }
 
         public AdminPage SelectUserRole(UserRole userRole)
@@ -88,12 +79,6 @@ namespace CNS_SampleProject.PageObjects
         {
             _driver.FindElement(_field_Password).SendKeys(password);
             _driver.FindElement(_field_ConfirmPassword).SendKeys(password);
-            return this;
-        }
-
-        public AdminPage ClickSave()
-        {
-            _driver.FindElement(_button_Submit).Click();
             return this;
         }
 
