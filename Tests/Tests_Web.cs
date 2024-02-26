@@ -48,11 +48,12 @@ namespace CNS_SampleProject.Tests
                 .ClickAddButton<PIMPage>()
                 .EnterEmployeeFullName(Config.testName, nameInThisTest, nameInThisTest)
                 .UploadImage()
+                .EnterEmployeeID()
                 .ClickSave<PIMPage>()
                 .CheckIsEmployeeCreated();
         }
 
-        //please run this test after AddEmployee.
+        //Please run this test after AddEmployee test.
         //Because this test needs existing Employee, but other site users could remove my employee. thanks :)
         [Test]
         public void AddUser_AdminRole()

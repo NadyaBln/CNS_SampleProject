@@ -11,6 +11,7 @@ namespace CNS_SampleProject.PageObjects
         public static By _field_firstname = By.XPath("//input[@name='firstName']");
         public static By _field_middlename = By.XPath("//input[@name='middleName']");
         public static By _field_lastname = By.XPath("//input[@name='lastName']");
+        public static By _field_employeeID = By.XPath("//label[text()='Employee Id']/following::input[1]");
         public static By _errorMessage_idAlreadyExists = By.CssSelector(".oxd-input.oxd-input--active.oxd-input--error");
 
         public static By _imageInput = By.XPath("//input[@type='file']");
@@ -43,13 +44,26 @@ namespace CNS_SampleProject.PageObjects
             return this;
         }
         
-        public PIMPage CheckIsEmployeeIDAvailable()
+        public PIMPage EnterEmployeeID()
         {
-            if (_driver.FindElements(_errorMessage_idAlreadyExists).Count > 0)
-            {
+            IWebElement idField = _driver.FindElement(_field_employeeID);
 
+            do
+            {
+                string newID = GenerateNewEmployeeID();
+                idField.Click();
+                idField.Clear();
+                idField.SendKeys(newID);
             }
+            while (_driver.FindElements(_errorMessage_idAlreadyExists).Count > 0);
+            Thread.Sleep(1500);
+
             return this;
+        }
+
+        private string GenerateNewEmployeeID()
+        {
+            return Generator.IDGenerator();
         }
 
         public PIMPage CheckIsEmployeeCreated()

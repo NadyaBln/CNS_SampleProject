@@ -5,7 +5,10 @@ This is a sample project showcasing my skills.
 
 ### Description
 The CNS Sample Project (C#, Nunit, Selenium) is a simple project that demonstrates concepts and practices in AQA. 
-It includes examples of unit tests, API interactions, and basic project structure. I have used Page Object Pattern
+It includes examples of unit tests, API interactions, and basic project structure. 
+Page Object Pattern is used to make project maintainable and easy-to-navigate.
+Additionally, I've implemented Generics to facilitate the construction of method chains. 
+This approach allows some methods to be universal and not bound to a specific class instance, enhancing flexibility and usability.
 
 ### Features
 - Retrieve data from the FakeStoreAPI.

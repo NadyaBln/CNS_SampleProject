@@ -17,7 +17,7 @@
         public static string IDGenerator()
         {
             Random random = new Random();
-            string id = random.Next(10, 99999).ToString();
+            string id = random.Next(10, 9999).ToString();
             return id;
         }
     }
